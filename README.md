@@ -18,4 +18,4 @@ node server.js
 
 **Bước 4: Mở giao diện (Frontend): Click đúp chuột vào file index.html để bắt đầu sử dụng.**
 
-📢 Lời nhắn: Trong quá trình thực hiện task này, em có sử dụng AI để hỗ trợ ạ. Vì kiến thức về web của em còn ít, em sẽ cố gắng tự rèn luyện và học hỏi thêm nhiều hơn trong thời gian tới để nắm kiến thức ạ.
+📢 Lời nhắn: Trong quá trình thực hiện task này, em có sử dụng AI để hỗ trợ ạ. Vì kiến thức về web của em còn hạn chế, em sẽ cố gắng tự rèn luyện và học hỏi thêm nhiều hơn trong thời gian tới để nắm kiến thức ạ.
