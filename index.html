@@ -48,12 +48,11 @@
 </div>
 
 <script>
-    // Hàm gọi API tự động
+
     async function autoCalc(operator, id1, id2, idRes) {
         const num1 = document.getElementById(id1).value;
         const num2 = document.getElementById(id2).value;
 
-        // Chỉ gọi API nếu cả 2 ô đều có dữ liệu
         if (num1 === '' || num2 === '') {
             document.getElementById(idRes).innerText = '...';
             return;
@@ -69,7 +68,7 @@
             const data = await response.json();
             document.getElementById(idRes).innerText = data.result;
         } catch (error) {
-            console.error('Lỗi kết nối API:', error);
+            console.error('Lỗi:', error);
         }
     }
 </script>
