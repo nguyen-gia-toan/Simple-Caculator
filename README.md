@@ -1,4 +1,4 @@
-# Simple Calculator (Client-Server Architecture)
+# Simple Calculator
 
 Dự án là một ứng dụng web máy tính đơn giản, hoạt động theo mô hình Client-Server (Giao diện gửi số liệu, Server xử lý tính toán và trả về kết quả).
 
