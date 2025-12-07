@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Calculator API</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; display: flex; justify-content: center; padding-top: 50px; }
+        .container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; flex-direction: column; gap: 15px; }
+        .row { display: flex; align-items: center; gap: 10px; font-size: 18px; }
+        input { width: 60px; padding: 8px; text-align: center; border: 1px solid #ddd; border-radius: 4px; font-size: 16px;}
+        span { font-weight: bold; min-width: 30px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <input type="number" id="add1" oninput="autoCalc('+', 'add1', 'add2', 'resAdd')">
+        <span>+</span>
+        <input type="number" id="add2" oninput="autoCalc('+', 'add1', 'add2', 'resAdd')">
+        <span>=</span>
+        <span id="resAdd">...</span>
+    </div>
+
+    <div class="row">
+        <input type="number" id="sub1" oninput="autoCalc('-', 'sub1', 'sub2', 'resSub')">
+        <span>-</span>
+        <input type="number" id="sub2" oninput="autoCalc('-', 'sub1', 'sub2', 'resSub')">
+        <span>=</span>
+        <span id="resSub">...</span>
+    </div>
+
+    <div class="row">
+        <input type="number" id="mul1" oninput="autoCalc('x', 'mul1', 'mul2', 'resMul')">
+        <span>x</span>
+        <input type="number" id="mul2" oninput="autoCalc('x', 'mul1', 'mul2', 'resMul')">
+        <span>=</span>
+        <span id="resMul">...</span>
+    </div>
+
+    <div class="row">
+        <input type="number" id="div1" oninput="autoCalc('/', 'div1', 'div2', 'resDiv')">
+        <span>/</span>
+        <input type="number" id="div2" oninput="autoCalc('/', 'div1', 'div2', 'resDiv')">
+        <span>=</span>
+        <span id="resDiv">...</span>
+    </div>
+</div>
+
+<script>
+    // Hàm gọi API tự động
+    async function autoCalc(operator, id1, id2, idRes) {
+        const num1 = document.getElementById(id1).value;
+        const num2 = document.getElementById(id2).value;
+
+        // Chỉ gọi API nếu cả 2 ô đều có dữ liệu
+        if (num1 === '' || num2 === '') {
+            document.getElementById(idRes).innerText = '...';
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:3000/api/calculate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ num1, num2, operator })
+            });
+
+            const data = await response.json();
+            document.getElementById(idRes).innerText = data.result;
+        } catch (error) {
+            console.error('Lỗi kết nối API:', error);
+        }
+    }
+</script>
+
+</body>
+</html>
